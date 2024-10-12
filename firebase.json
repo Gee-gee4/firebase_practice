@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"eye-auth","appId":"1:59326643350:android:85b9b66e1da9af817116b7","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"eye-auth","configurations":{"android":"1:59326643350:android:85b9b66e1da9af817116b7","ios":"1:59326643350:ios:a7913f23766ce6f87116b7"}}}}}}

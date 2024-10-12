@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "59326643350",
+    "project_id": "eye-auth",
+    "storage_bucket": "eye-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59326643350:android:85b9b66e1da9af817116b7",
+        "android_client_info": {
+          "package_name": "com.example.firebase_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVL16sYY2zejilvK47_XVJHLvtGTclJ5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
