@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'eye-auth.appspot.com',
     iosBundleId: 'com.example.firebasePractice',
   );
+
 }
