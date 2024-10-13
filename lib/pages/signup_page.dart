@@ -18,13 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmpasswordTextController =
       TextEditingController();
 
-  void signUpUser() {
-    //show loading circle
-
-    //make sure passwords match
-
-    //try create the user
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -78,40 +72,40 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                  signInSinUpButton(
-                    context,
-                    false,
-                    () {
-                      if (_passwordTextController.text !=
-                          _confirmpasswordTextController.text) {
-                        showDialog(
-                            context: context,
-                            builder: (context) => const AlertDialog(
-                                  title: Text('Passwords don\'t match!'),
-                                ));
-                      } else {
-                        FirebaseAuth.instance
-                            .createUserWithEmailAndPassword(
-                                email: _emailTextController.text,
-                                password: _passwordTextController.text)
-                            .then((value) {
-                          // ignore: avoid_print
-                          print('Created New Account!!');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
-                            ),
-                          );
-                        }).onError(
-                          (error, stackTrace) {
-                            // ignore: avoid_print
-                            print('Error ${error.toString()}');
-                          },
+                signInSinUpButton(
+                  context,
+                  false,
+                  () {
+                    if (_passwordTextController.text !=
+                        _confirmpasswordTextController.text) {
+                      showDialog(
+                          context: context,
+                          builder: (context) => const AlertDialog(
+                                title: Text('Passwords don\'t match!'),
+                              ));
+                    } else {
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
+                        // ignore: avoid_print
+                        print('Created New Account!!');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
                         );
-                      }
-                    },
-                  ),
+                      }).onError(
+                        (error, stackTrace) {
+                          // ignore: avoid_print
+                          print('Error ${error.toString()}');
+                        },
+                      );
+                    }
+                  },
+                ),
               ],
             ),
           ),
@@ -120,3 +114,22 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
+// E R R O R
+/* 
+ive not changed anything in my code this is the error 
+I/FirebaseAuth( 3816): Creating user with get2@gmail.com with empty reCAPTCHA token
+W/System ( 3816): Ignoring header X-Firebase-Locale because its value was null.
+I/System.out( 3816): [okhttp]:check permission begin!
+I/System.out( 3816): [okhttp]:not MMS!
+I/System.out( 3816): [okhttp]:not Email!
+I/System.out( 3816): [OkHttp] sendRequest
+W/System ( 3816): Ignoring header X-Firebase-Locale because its value was null.
+I/System.out( 3816): [okhttp]:check permission begin!
+I/System.out( 3816): [okhttp]:not MMS!
+I/System.out( 3816): [okhttp]:not Email!
+I/System.out( 3816): [OkHttp] sendRequest
+D/FirebaseAuth( 3816): Notifying id token listeners about user ( iFie91niwWPh1V6kZl5Sm1XdfIi1 ).
+D/FirebaseAuth( 3816): Notifying auth state listeners about user ( iFie91niwWPh1V6kZl5Sm1XdfIi1 ).
+I/flutter ( 3816): Error type 'List<Object?>' is not a subtype of type 'PigeonUserDetails?' in type cast 
+*/
