@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_practice/pages/home_screen.dart';
 import 'package:firebase_practice/pages/signup_page.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
@@ -16,30 +18,32 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     Row signUpOption() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      const Text(
-        'Dont have an account?',
-        style: TextStyle(color: Colors.white70),
-      ),
-      InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignUpPage(),
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'Dont have an account?',
+            style: TextStyle(color: Colors.white70),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignUpPage(),
+                ),
+              );
+            },
+            child: const Text(
+              ' Sign Up',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
-          );
-        },
-        child: const Text(
-          ' Sign Up',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    ],
-  );
-}
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -78,9 +82,24 @@ class _SignInPageState extends State<SignInPage> {
                   signInSinUpButton(
                     context,
                     true,
-                    () {},
+                    () {
+                      FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      }).onError((error, stackTrace) {
+                        print('Error ${error.toString()}');
+                      });
+                    },
                   ),
-                   const SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   signUpOption()
@@ -91,5 +110,3 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 }
-
-

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/pages/home_screen.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
@@ -11,10 +12,20 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController _userNameTextController = TextEditingController();
+  final TextEditingController _userNameTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _confirmpasswordTextController =
+      TextEditingController();
 
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
+  void signUpUser() {
+    //show loading circle
+
+    //make sure passwords match
+
+    //try create the user
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,18 +73,45 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                signInSinUpButton(
-                  context,
-                  false,
-                  () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
-                  },
+                reusableTextField('Confirm Password', Icons.lock_outline, true,
+                    _confirmpasswordTextController),
+                const SizedBox(
+                  height: 20.0,
                 ),
+                  signInSinUpButton(
+                    context,
+                    false,
+                    () {
+                      if (_passwordTextController.text !=
+                          _confirmpasswordTextController.text) {
+                        showDialog(
+                            context: context,
+                            builder: (context) => const AlertDialog(
+                                  title: Text('Passwords don\'t match!'),
+                                ));
+                      } else {
+                        FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: _emailTextController.text,
+                                password: _passwordTextController.text)
+                            .then((value) {
+                          // ignore: avoid_print
+                          print('Created New Account!!');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ),
+                          );
+                        }).onError(
+                          (error, stackTrace) {
+                            // ignore: avoid_print
+                            print('Error ${error.toString()}');
+                          },
+                        );
+                      }
+                    },
+                  ),
               ],
             ),
           ),
