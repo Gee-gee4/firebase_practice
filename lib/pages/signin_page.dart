@@ -15,6 +15,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
+
+  bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     Row signUpOption() {
@@ -70,12 +73,21 @@ class _SignInPageState extends State<SignInPage> {
                 children: [
                   logoAuth('assets/auth/eyes.png'),
                   reusableTextField('Enter Username', Icons.person_outline,
-                      false, _emailTextController),
+                      true, _emailTextController),
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField('Enter Password', Icons.lock_outline, true,
-                      _passwordTextController),
+                  reusableTextField(
+                    'Enter Password',
+                    Icons.lock_outline,
+                    showPassword,
+                    _passwordTextController,
+                    toggleOnOff: () {
+                      setState(() {
+                        showPassword = !showPassword;
+                      });
+                    },
+                  ),
                   const SizedBox(
                     height: 20,
                   ),

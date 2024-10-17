@@ -11,12 +11,13 @@ Image logoAuth(String imageName) {
 
 //........................................................................................
 
-TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
+TextField reusableTextField(String text, IconData icon, bool showText,
+    TextEditingController controller,
+    {Function()? toggleOnOff}) {
   return TextField(
     controller: controller,
-    obscureText: isPasswordType,
-    enableSuggestions: !isPasswordType,
+    obscureText: !showText,
+    enableSuggestions: showText,
     cursorColor: Colors.white,
     style: TextStyle(
       color: Colors.white.withOpacity(0.9),
@@ -37,10 +38,15 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
         borderRadius: BorderRadius.circular(30.0),
         borderSide: const BorderSide(width: 0, style: BorderStyle.none),
       ),
+      suffixIcon: toggleOnOff == null
+          ? null
+          : IconButton(
+              onPressed: toggleOnOff,
+              icon: Icon(showText ? Icons.visibility_off : Icons.visibility),
+            ),
     ),
-    keyboardType: isPasswordType
-        ? TextInputType.visiblePassword
-        : TextInputType.emailAddress,
+    keyboardType:
+        !showText ? TextInputType.visiblePassword : TextInputType.emailAddress,
   );
 }
 

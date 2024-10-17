@@ -18,7 +18,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _confirmpasswordTextController =
       TextEditingController();
 
- 
+  bool showPassword = false;
+  bool showConfirmPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,23 +53,41 @@ class _SignUpPageState extends State<SignUpPage> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 20),
             child: Column(
               children: [
-                reusableTextField('Enter Username', Icons.person_outline, false,
+                reusableTextField('Enter Username', Icons.person_outline, true,
                     _userNameTextController),
                 const SizedBox(
                   height: 20.0,
                 ),
-                reusableTextField('Enter Email Id', Icons.person_outline, false,
+                reusableTextField('Enter Email Id', Icons.person_outline, true,
                     _emailTextController),
                 const SizedBox(
                   height: 20.0,
                 ),
-                reusableTextField('Enter Password', Icons.lock_outline, true,
-                    _passwordTextController),
+                reusableTextField(
+                  'Enter Password',
+                  Icons.lock_outline,
+                  showPassword,
+                  _passwordTextController,
+                  toggleOnOff: () {
+                    setState(() {
+                      showPassword = !showPassword;
+                    });
+                  },
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
-                reusableTextField('Confirm Password', Icons.lock_outline, true,
-                    _confirmpasswordTextController),
+                reusableTextField(
+                  'Confirm Password',
+                  Icons.lock_outline,
+                  showConfirmPassword,
+                  _confirmpasswordTextController,
+                  toggleOnOff: () {
+                    setState(() {
+                      showConfirmPassword = !showConfirmPassword;
+                    });
+                  },
+                ),
                 const SizedBox(
                   height: 20.0,
                 ),
