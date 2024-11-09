@@ -92,8 +92,9 @@ Container signInSinUpButton(
 }
 
 //........................................................................................
-CircleAvatar myCircleAvatar() {
+CircleAvatar myCircleAvatar(String myImage) {
   return CircleAvatar(
     radius: 25,
+    backgroundImage: AssetImage(myImage),
   );
 }

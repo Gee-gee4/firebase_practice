@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Icon(Icons.menu),
+        leading: const Icon(Icons.menu,color: Colors.brown,),
       ),
       //backgroundColor: Colors.pink[100],
       body: Column(
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               const Text(
                 '27°',
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
               ),
               Container(
                 height: 50,
@@ -100,15 +100,15 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    myCircleAvatar(),
+                    myCircleAvatar('assets/auth/one.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),
-                    myCircleAvatar(),
+                    myCircleAvatar('assets/auth/two.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),
-                    myCircleAvatar(),
+                    myCircleAvatar('assets/auth/three.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),
