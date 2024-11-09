@@ -11,8 +11,8 @@ Image logoAuth(String imageName) {
 
 //........................................................................................
 
-TextField reusableTextField(String text, IconData icon, bool showText,
-    TextEditingController controller,
+TextField reusableTextField(
+    String text, IconData icon, bool showText, TextEditingController controller,
     {Function()? toggleOnOff}) {
   return TextField(
     controller: controller,
@@ -92,5 +92,8 @@ Container signInSinUpButton(
 }
 
 //........................................................................................
-
-
+CircleAvatar myCircleAvatar() {
+  return CircleAvatar(
+    radius: 25,
+  );
+}
