@@ -1,4 +1,5 @@
-import 'package:firebase_practice/room_model.dart';
+import 'package:firebase_practice/pages/description_page.dart';
+import 'package:firebase_practice/model/room_model.dart';
 import 'package:flutter/material.dart';
 
 class RoomsCards extends StatelessWidget {
@@ -22,23 +23,34 @@ class RoomsCards extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 //color: Colors.brown,
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      room.imagePath,
-                      height: 300,
-                      width: 150,
-                      fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DescriptionPage(describeRoom: room),
                     ),
-                    Center(
-                      child: Text(
-                        room.title,
-                        style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        room.imagePath,
+                        height: 300,
+                        width: 150,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                  ],
+                      Center(
+                        child: Text(
+                          room.title,
+                          style: const TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );
