@@ -1,6 +1,8 @@
+import 'package:firebase_practice/drawer_content.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
 import 'package:firebase_practice/widgets/rooms_cards.dart';
+import 'package:firebase_practice/widgets/switch.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,14 +11,17 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: hexStringToColor('dbc2ad'),
-        
-      ),
-      backgroundColor: hexStringToColor('F2E5D9'),
+      // backgroundColor: hexStringToColor('f2e5d9'),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      drawer: const DrawerContent(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        iconTheme: IconThemeData(
+          color: Theme.of(context)
+              .colorScheme
+              .secondary, // Change the drawer icon color here
+        ),
         // leading: const Icon(
         //   Icons.menu,
         //   color: Colors.brown,
@@ -32,8 +37,8 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  '27°',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  '70°F',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 Container(
                   height: 50,
@@ -41,9 +46,9 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.5), // Shadow color
+                        color: Colors.grey.withOpacity(0.2), // Shadow color
                         spreadRadius: 2, // How wide the shadow spreads
-                        blurRadius: 5, // The blur effect of the shadow
+                        blurRadius: 2, // The blur effect of the shadow
                         offset: const Offset(
                             0, 3), // Positioning of the shadow (x, y)
                       ),
@@ -52,17 +57,13 @@ class HomeScreen extends StatelessWidget {
                       topLeft: Radius.circular(30),
                       bottomLeft: Radius.circular(30),
                     ),
-                    color: hexStringToColor('e9d3c0'),
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Icon(
-                        Icons.add_circle,
-                        size: 35,
-                        color: hexStringToColor('8d765b'),
-                      ),
+                      child: SwitchButton()
                     ),
                   ),
                 ),
@@ -78,7 +79,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hi Moana',
+                  'Hi Gee',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 Text(
@@ -99,9 +100,9 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5), // Shadow color
+                    color: Colors.grey.withOpacity(0.2), // Shadow color
                     spreadRadius: 2, // How wide the shadow spreads
-                    blurRadius: 5, // The blur effect of the shadow
+                    blurRadius: 2, // The blur effect of the shadow
                     offset:
                         const Offset(0, 3), // Positioning of the shadow (x, y)
                   ),
@@ -110,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                   topLeft: Radius.circular(30),
                   bottomLeft: Radius.circular(30),
                 ),
-                color: hexStringToColor('e9d3c0'),
+                color: Theme.of(context).colorScheme.primary,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -133,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                       icon: Icon(
                         Icons.add_circle,
                         size: 35,
-                        color: hexStringToColor('d1b7a1'),
+                        color: hexStringToColor('8d765b').withOpacity(0.6),
                       ),
                     ),
                   ],
@@ -155,8 +156,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_forward_ios,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                 ),
               ],

@@ -98,3 +98,13 @@ CircleAvatar myCircleAvatar(String myImage) {
     backgroundImage: AssetImage(myImage),
   );
 }
+
+//........................................................................................
+
+ListTile myListTile(Icon myIcon,String myDrawerText,Function()? onTap) {
+  return ListTile(
+    leading: myIcon,
+    title: Text(myDrawerText),
+    
+  );
+}

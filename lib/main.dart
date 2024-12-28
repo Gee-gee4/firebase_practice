@@ -1,12 +1,20 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_practice/firebase_options.dart';
-import 'package:firebase_practice/pages/signin_page.dart';
+import 'package:firebase_practice/pages/home_screen.dart';
+// import 'package:firebase_practice/pages/signin_page.dart';
+import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,12 +24,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: false,
-      ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      
+      // ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+      //   useMaterial3: false,
+      // ),
       debugShowCheckedModeBanner: false,
-      home: SignInPage(),
+      // home: SignInPage(),
+      initialRoute: '/',
+      routes: {'/': (context) => const HomeScreen()},
     );
   }
 }
