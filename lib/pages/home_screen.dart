@@ -1,33 +1,39 @@
-import 'package:firebase_practice/drawer_content.dart';
+import 'package:firebase_practice/my_app_bar.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
 import 'package:firebase_practice/widgets/rooms_cards.dart';
 import 'package:firebase_practice/widgets/switch.dart';
 import 'package:flutter/material.dart';
+import 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController =
+      ScrollController(); // Define the controller here
+  @override
+  void dispose() {
+    _scrollController.dispose(); // Clean up the controller
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: hexStringToColor('f2e5d9'),
       backgroundColor: Theme.of(context).colorScheme.surface,
-      drawer: const DrawerContent(),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Theme.of(context)
-              .colorScheme
-              .secondary, // Change the drawer icon color here
-        ),
-        // leading: const Icon(
-        //   Icons.menu,
-        //   color: Colors.brown,
-        // ),
+      //  const DrawerContent(),
+      appBar: MyAppBar(
+        onDrawerIconPressed: () {
+          SimpleHiddenDrawerController.of(context).toggle();
+        },
+        backgroundColorAppBar: Colors.transparent,  // Optional, you can customize the color here
       ),
-      //backgroundColor: Colors.pink[100],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,9 +68,7 @@ class HomeScreen extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: SwitchButton()
-                    ),
+                        alignment: Alignment.centerLeft, child: SwitchButton()),
                   ),
                 ),
               ],
@@ -155,7 +159,13 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _scrollController.animateTo(
+                      _scrollController.position.maxScrollExtent,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeOut,
+                    );
+                  },
                   icon: Icon(
                     Icons.arrow_forward_ios,
                     color: Theme.of(context).colorScheme.secondary,
@@ -164,10 +174,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               children: [
-                RoomsCards(),
+                RoomsCards(scrollController: _scrollController),
               ],
             ),
           ),

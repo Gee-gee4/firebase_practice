@@ -3,13 +3,17 @@ import 'package:firebase_practice/model/room_model.dart';
 import 'package:flutter/material.dart';
 
 class RoomsCards extends StatelessWidget {
-  const RoomsCards({super.key});
+  final ScrollController scrollController;
+
+  const RoomsCards({super.key, required this.scrollController});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 300,
       child: ListView.builder(
+          controller: scrollController, // Using the passed controller
+
           scrollDirection: Axis.horizontal,
           itemCount: allRoomList.length,
           itemBuilder: (context, index) {

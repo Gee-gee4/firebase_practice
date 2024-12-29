@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_practice/firebase_options.dart';
-import 'package:firebase_practice/pages/home_screen.dart';
+import 'package:firebase_practice/hidden_drawer.dart';
 // import 'package:firebase_practice/pages/signin_page.dart';
 import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      
+
       // ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       //   useMaterial3: false,
@@ -33,7 +33,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: SignInPage(),
       initialRoute: '/',
-      routes: {'/': (context) => const HomeScreen()},
+      routes: {
+        '/': (context) => const HiddenDrawer(),
+      },
     );
   }
 }
