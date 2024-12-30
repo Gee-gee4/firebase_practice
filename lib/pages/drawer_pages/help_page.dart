@@ -17,6 +17,47 @@ class HelpPage extends StatelessWidget {
         backgroundColorAppBar:
             Colors.transparent, // Optional, you can customize the color here
       ),
+      body: ListView(
+        children: [
+          const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text(
+          "Welcome to the Help Page! Find solutions to your queries below.",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+      ),
+      const ExpansionTile(
+        title: Text("Getting Started"),
+        children: [
+          ListTile(title: Text("How to connect your device")),
+          ListTile(title: Text("Setting up your account")),
+        ],
+      ),
+      const ExpansionTile(
+        title: Text("Troubleshooting"),
+        children: [
+          ListTile(title: Text("Why can't I connect to Wi-Fi?")),
+          ListTile(title: Text("Device not responding")),
+        ],
+      ),
+      const ExpansionTile(
+        title: Text("FAQs"),
+        children: [
+          ListTile(title: Text("How do I reset my password?")),
+          ListTile(title: Text("How do I add a new device?")),
+        ],
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate to support page or open chat
+          },
+          child: const Text("Contact Support"),
+        ),
+      ),
+        ],
+      ),
     );
   }
 }

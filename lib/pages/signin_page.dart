@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_practice/pages/home_screen.dart';
+import 'package:firebase_practice/hidden_drawer.dart';
 import 'package:firebase_practice/pages/signup_page.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
@@ -15,6 +15,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
+  
 
   bool showPassword = false;
 
@@ -46,7 +47,6 @@ class _SignInPageState extends State<SignInPage> {
         ],
       );
     }
-
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -103,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => HiddenDrawer(),
                           ),
                         );
                       }).onError((error, stackTrace) {

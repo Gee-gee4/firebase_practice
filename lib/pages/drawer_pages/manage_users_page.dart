@@ -17,6 +17,25 @@ class ManageUsersPage extends StatelessWidget {
         backgroundColorAppBar:
             Colors.transparent, // Optional, you can customize the color here
       ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const CircleAvatar(
+            backgroundImage: AssetImage('assets/auth/two.jpeg'),
+          ),
+          const Text('Gee'),
+          const Text('gee1@gmail.com'),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Icon(Icons.delete),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }

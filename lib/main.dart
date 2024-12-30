@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_practice/firebase_options.dart';
-import 'package:firebase_practice/hidden_drawer.dart';
+import 'package:firebase_practice/pages/signin_page.dart';
 // import 'package:firebase_practice/pages/signin_page.dart';
 import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       // home: SignInPage(),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HiddenDrawer(),
+        '/': (context) => const SignInPage(),
       },
     );
   }

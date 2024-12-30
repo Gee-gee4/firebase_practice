@@ -21,8 +21,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: backgroundColorAppBar ?? Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(
-        color:
-            Theme.of(context).colorScheme.secondary, // Change drawer icon color
+        color:Theme.of(context).colorScheme.secondary,// Change drawer icon color
       ),
       leading: IconButton(
         onPressed: onDrawerIconPressed,

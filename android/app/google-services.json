@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "59326643350",
     "project_id": "eye-auth",
-    "storage_bucket": "eye-auth.appspot.com"
+    "storage_bucket": "eye-auth.firebasestorage.app"
   },
   "client": [
     {

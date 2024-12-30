@@ -1,5 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_practice/pages/home_screen.dart';
+import 'package:firebase_practice/hidden_drawer.dart';
 import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +13,27 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final TextEditingController _userNameTextController = TextEditingController();
+  // final TextEditingController _userNameTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _confirmpasswordTextController =
       TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
 
   bool showPassword = false;
   bool showConfirmPassword = false;
+
+  Future addUserDetails(
+      String firstName, String lastName, String email, int age) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'first name': firstName,
+      'last name': lastName,
+      'email': email,
+      'age': age,
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,31 +54,48 @@ class _SignUpPageState extends State<SignUpPage> {
             colors: [
               hexStringToColor('BB73E0'),
               hexStringToColor('FF8DDB'),
-              //  hexStringToColor('A9AACE'),
-              // hexStringToColor('C3C4FF'),
-              //hexStringToColor('1C0125'),
-              // hexStringToColor('A0A8F3'),
             ],
           ),
         ),
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(
-                20, MediaQuery.of(context).size.height * 0.2, 20, 20),
+                20, MediaQuery.of(context).size.height * 0.15, 20, 20),
             child: Column(
               children: [
-                reusableTextField('Enter Username', Icons.person_outline, true,
-                    _userNameTextController),
+                //first name
+                reusableTextField('First Name', Icons.person_outline, true,
+                    _firstNameController),
                 const SizedBox(
                   height: 20.0,
                 ),
-                reusableTextField('Enter Email Id', Icons.person_outline, true,
+                //last name
+                reusableTextField('Last Name', Icons.person_outline, true,
+                    _lastNameController),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                //age
+                reusableTextField(
+                    'Age', Icons.person_outline, true, _ageController),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                // //Username
+                // reusableTextField('Enter Username', Icons.person_outline, true,
+                //     _userNameTextController),
+                // const SizedBox(
+                //   height: 20.0,
+                // ),
+                //email
+                reusableTextField('Email Id', Icons.person_outline, true,
                     _emailTextController),
                 const SizedBox(
                   height: 20.0,
                 ),
+                //password
                 reusableTextField(
-                  'Enter Password',
+                  'Password',
                   Icons.lock_outline,
                   showPassword,
                   _passwordTextController,
@@ -77,6 +108,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 20.0,
                 ),
+                //confirm password
                 reusableTextField(
                   'Confirm Password',
                   Icons.lock_outline,
@@ -98,22 +130,32 @@ class _SignUpPageState extends State<SignUpPage> {
                     if (_passwordTextController.text !=
                         _confirmpasswordTextController.text) {
                       showDialog(
-                          context: context,
-                          builder: (context) => const AlertDialog(
-                                title: Text('Passwords don\'t match!'),
-                              ));
+                        context: context,
+                        builder: (context) => const AlertDialog(
+                          title: Text('Passwords don\'t match!'),
+                        ),
+                      );
                     } else {
+                      //create user
                       FirebaseAuth.instance
                           .createUserWithEmailAndPassword(
                               email: _emailTextController.text,
                               password: _passwordTextController.text)
                           .then((value) {
+                        //add user details to firebase
+                        addUserDetails(
+                          _firstNameController.text.trim(),
+                          _lastNameController.text.trim(),
+                          _emailTextController.text.trim(),
+                          int.parse(_ageController.text.trim()),
+                        );
                         // ignore: avoid_print
+                        // Navigate to Hiddendrawer()
                         print('Created New Account!!');
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
+                            builder: (context) => const HiddenDrawer(),
                           ),
                         );
                       }).onError(

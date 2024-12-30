@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:59326643350:android:85b9b66e1da9af817116b7',
     messagingSenderId: '59326643350',
     projectId: 'eye-auth',
-    storageBucket: 'eye-auth.appspot.com',
+    storageBucket: 'eye-auth.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -62,7 +62,7 @@ class DefaultFirebaseOptions {
     appId: '1:59326643350:ios:a7913f23766ce6f87116b7',
     messagingSenderId: '59326643350',
     projectId: 'eye-auth',
-    storageBucket: 'eye-auth.appspot.com',
+    storageBucket: 'eye-auth.firebasestorage.app',
     iosBundleId: 'com.example.firebasePractice',
   );
 
