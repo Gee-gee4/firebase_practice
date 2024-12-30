@@ -17,7 +17,7 @@ class DescriptionPage extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon:  Icon(Icons.arrow_back_ios,color: Theme.of(context).colorScheme.secondary,),
+            icon:  Icon(Icons.arrow_back_ios_new_outlined,color: Theme.of(context).colorScheme.secondary,),
           ),
         ),
         actions: [

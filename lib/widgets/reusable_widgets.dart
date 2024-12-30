@@ -1,3 +1,5 @@
+import 'package:firebase_practice/model/room_model.dart';
+import 'package:firebase_practice/pages/description_page.dart';
 import 'package:flutter/material.dart';
 
 Image logoAuth(String imageName) {
@@ -101,12 +103,57 @@ CircleAvatar myCircleAvatar(String myImage) {
 
 //........................................................................................
 
-ListTile myListTile(Icon myIcon,String myDrawerText,Function()? onTap) {
+ListTile myListTile(Icon myIcon, String myDrawerText, Function()? onTap) {
   return ListTile(
     leading: myIcon,
     title: Text(myDrawerText),
-    
   );
 }
 
+//........................................................................................
 
+Container myRoomContainer(BuildContext context, index) {
+  final room = allRoomList[index];
+  return Container(
+    //padding: EdgeInsets.all(8),
+    margin: const EdgeInsets.only(
+      left: 10,
+      right: 2,
+    ),
+    width: 150,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      //color: Colors.brown,
+    ),
+    child: InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DescriptionPage(describeRoom: room),
+          ),
+        );
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Stack(
+          children: [
+            Image.asset(
+              room.imagePath,
+              height: 300,
+              width: 150,
+              fit: BoxFit.cover,
+            ),
+            Center(
+              child: Text(
+                room.title,
+                style: const TextStyle(
+                    color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}

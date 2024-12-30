@@ -32,7 +32,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'My Account',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -44,7 +44,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Manage Users',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -56,7 +56,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Devices',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -68,7 +68,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Rooms',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -80,7 +80,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Music',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -92,7 +92,7 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Settings',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
@@ -104,11 +104,23 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         name: 'Help',
         baseStyle: const TextStyle(),
         selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.secondary,
+        colorLineSelected: Theme.of(context).colorScheme.surface,
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
         child: const HelpPage(),
+      ),
+    ),
+    ScreenHiddenDrawer(
+      ItemHiddenMenu(
+        name: 'Logout',
+        baseStyle: const TextStyle(),
+        selectedStyle: const TextStyle(),
+        colorLineSelected: Theme.of(context).colorScheme.surface,
+      ),
+      Theme(
+        data: Provider.of<ThemeProvider>(context).themeData,
+        child: AboutDialog(),
       ),
     ),
   ];

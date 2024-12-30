@@ -14,10 +14,8 @@ class AccountPage extends StatelessWidget {
         onDrawerIconPressed: () {
           SimpleHiddenDrawerController.of(context).toggle();
         },
-        backgroundColorAppBar: Colors.transparent,  // Optional, you can customize the color here
-      ),
-      body: const Center(
-        child: Text('Account Page'),
+        backgroundColorAppBar:
+            Colors.transparent, // Optional, you can customize the color here
       ),
     );
   }
