@@ -22,7 +22,11 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
     // Clear the list before fetching
     docIDs.clear();
 
-    await FirebaseFirestore.instance.collection('users').get().then(
+    await FirebaseFirestore.instance
+        .collection('users')
+        .orderBy('age', descending: false)
+        .get()
+        .then(
           (snapshot) => snapshot.docs.forEach(
             (document) {
               // ignore: avoid_print
@@ -107,10 +111,14 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
         future: getDocId(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
           if (snapshot.hasError) {
-            return const Center(child: Text('Error fetching data'));
+            return const Center(
+              child: Text('Error fetching data'),
+            );
           }
           return ListView.builder(
             itemCount: docIDs.length,
@@ -118,6 +126,7 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListTile(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   tileColor: Theme.of(context).colorScheme.primary,
                   title: GetUserName(documentId: docIDs[index]),
                 ),
