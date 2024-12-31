@@ -52,6 +52,9 @@ class _SignUpPageState extends State<SignUpPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
+              // Theme.of(context).colorScheme.secondary,
+              // Theme.of(context).colorScheme.onTertiary,
+              // Theme.of(context).colorScheme.primary,
               hexStringToColor('BB73E0'),
               hexStringToColor('FF8DDB'),
             ],
@@ -64,20 +67,20 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               children: [
                 //first name
-                reusableTextField('First Name', Icons.person_outline, true,
+                reusableTextField('First Name', null,true,
                     _firstNameController),
                 const SizedBox(
                   height: 20.0,
                 ),
                 //last name
-                reusableTextField('Last Name', Icons.person_outline, true,
+                reusableTextField('Last Name', null, true,
                     _lastNameController),
                 const SizedBox(
                   height: 20.0,
                 ),
                 //age
                 reusableTextField(
-                    'Age', Icons.person_outline, true, _ageController),
+                    'Age', null, true, _ageController),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -88,7 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 //   height: 20.0,
                 // ),
                 //email
-                reusableTextField('Email Id', Icons.person_outline, true,
+                reusableTextField('Email Id', null, true,
                     _emailTextController),
                 const SizedBox(
                   height: 20.0,
@@ -96,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 //password
                 reusableTextField(
                   'Password',
-                  Icons.lock_outline,
+                  null,
                   showPassword,
                   _passwordTextController,
                   toggleOnOff: () {
@@ -111,7 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 //confirm password
                 reusableTextField(
                   'Confirm Password',
-                  Icons.lock_outline,
+                  null,
                   showConfirmPassword,
                   _confirmpasswordTextController,
                   toggleOnOff: () {
@@ -127,6 +130,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   context,
                   false,
                   () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(
+                              child: CircularProgressIndicator(
+                            color: Theme.of(context).colorScheme.secondary,
+                          ));
+                        });
                     if (_passwordTextController.text !=
                         _confirmpasswordTextController.text) {
                       showDialog(
@@ -151,8 +162,18 @@ class _SignUpPageState extends State<SignUpPage> {
                         );
                         // ignore: avoid_print
                         // Navigate to Hiddendrawer()
+                        // ignore: avoid_print
                         print('Created New Account!!');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Account Created Successfully!'),
+                            duration: Duration(seconds: 3),
+                            behavior: SnackBarBehavior.floating,
+                            margin: EdgeInsets.only(bottom: 50.0, left: 20.0, right: 20.0), // Adjust margins
+                          ),
+                        );
                         Navigator.push(
+                          // ignore: use_build_context_synchronously
                           context,
                           MaterialPageRoute(
                             builder: (context) => const HiddenDrawer(),

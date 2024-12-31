@@ -1,5 +1,5 @@
 import 'package:firebase_practice/my_app_bar.dart';
-import 'package:firebase_practice/utils/color_hex.dart';
+  import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
 import 'package:firebase_practice/widgets/rooms_cards.dart';
 import 'package:firebase_practice/widgets/switch.dart';
@@ -22,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
         onDrawerIconPressed: () {
           SimpleHiddenDrawerController.of(context).toggle();
         },
-        backgroundColorAppBar: Colors.transparent,  // Optional, you can customize the color here
+        backgroundColorAppBar:
+            Colors.transparent, // Optional, you can customize the color here
+        
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

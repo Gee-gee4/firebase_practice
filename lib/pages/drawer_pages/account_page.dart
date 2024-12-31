@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
@@ -7,6 +8,13 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Gets the currently signed in user
+    User? user = FirebaseAuth.instance.currentUser;
+
+    //Checks if a user is signed in
+    //The email field is nullable, so we use ?? to provide a fallback in case no user is signed in.
+    String email = user?.email ?? 'No user signed in';
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: MyAppBar(
@@ -17,6 +25,7 @@ class AccountPage extends StatelessWidget {
         backgroundColorAppBar:
             Colors.transparent, // Optional, you can customize the color here
       ),
+      body: Text('Signed in as: $email'),
     );
   }
 }

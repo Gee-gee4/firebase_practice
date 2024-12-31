@@ -14,7 +14,7 @@ Image logoAuth(String imageName) {
 //........................................................................................
 
 TextField reusableTextField(
-    String text, IconData icon, bool showText, TextEditingController controller,
+    String text, IconData? icon, bool showText, TextEditingController controller,
     {Function()? toggleOnOff}) {
   return TextField(
     controller: controller,
@@ -25,10 +25,10 @@ TextField reusableTextField(
       color: Colors.white.withOpacity(0.9),
     ),
     decoration: InputDecoration(
-      prefixIcon: Icon(
+      prefixIcon: icon != null ? Icon(
         icon,
         color: Colors.white,
-      ),
+      ) : null,
       labelText: text,
       labelStyle: TextStyle(
         color: Colors.white.withOpacity(0.9),

@@ -1,7 +1,6 @@
 // hidden_drawer_pages.dart
 
 import 'package:firebase_practice/pages/drawer_pages/account_page.dart';
-import 'package:firebase_practice/pages/drawer_pages/devices_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/help_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/manage_users_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/music_page.dart';
@@ -12,6 +11,7 @@ import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:provider/provider.dart';
+
 
 List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
   return [
@@ -51,18 +51,18 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         child: const ManageUsersPage(),
       ),
     ),
-    ScreenHiddenDrawer(
-      ItemHiddenMenu(
-        name: 'Devices',
-        baseStyle: const TextStyle(),
-        selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.surface,
-      ),
-      Theme(
-        data: Provider.of<ThemeProvider>(context).themeData,
-        child: const DevicesPage(),
-      ),
-    ),
+    // ScreenHiddenDrawer(
+    //   ItemHiddenMenu(
+    //     name: 'Devices',
+    //     baseStyle: const TextStyle(),
+    //     selectedStyle: const TextStyle(),
+    //     colorLineSelected: Theme.of(context).colorScheme.surface,
+    //   ),
+    //   Theme(
+    //     data: Provider.of<ThemeProvider>(context).themeData,
+    //     child: const DevicesPage(),
+    //   ),
+    // ),
     ScreenHiddenDrawer(
       ItemHiddenMenu(
         name: 'Rooms',
@@ -111,17 +111,17 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
         child: const HelpPage(),
       ),
     ),
-    ScreenHiddenDrawer(
-      ItemHiddenMenu(
-        name: 'Logout',
-        baseStyle: const TextStyle(),
-        selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.surface,
-      ),
-      Theme(
-        data: Provider.of<ThemeProvider>(context).themeData,
-        child: AboutDialog(),
-      ),
-    ),
+    
+    // ScreenHiddenDrawer(
+    //     ItemHiddenMenu(
+    //       name: 'Logout',
+    //       baseStyle: const TextStyle(),
+    //       selectedStyle: const TextStyle(),
+    //       colorLineSelected: Theme.of(context).colorScheme.surface,
+    //     ),
+    //     Theme(
+    //       data: Provider.of<ThemeProvider>(context).themeData,
+    //       child: LogoutPage()
+    //     )),
   ];
 }

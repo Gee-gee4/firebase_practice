@@ -19,7 +19,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
     // Initialize pages in didChangeDependencies to ensure Theme.of(context) works
 
     // Initialize pages in didChangeDependencies to ensure Theme.of(context) works
-    _pages = getDrawerPages(context);  // Retrieve the pages from the new file
+    _pages = getDrawerPages(context); // Retrieve the pages from the new file
   }
 
   @override
@@ -33,7 +33,6 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
       isDraggable: true,
       slidePercent: 50,
       contentCornerRadius: 20,
-      
     );
   }
 }
