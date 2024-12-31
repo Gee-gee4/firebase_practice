@@ -22,6 +22,20 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
 
+  @override
+  void dispose() {
+    super.dispose();
+
+    _emailTextController.dispose();
+    _passwordTextController.dispose();
+    _confirmpasswordTextController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _ageController.dispose();
+
+    super.dispose();
+  }
+
   bool showPassword = false;
   bool showConfirmPassword = false;
 
@@ -67,20 +81,18 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Column(
               children: [
                 //first name
-                reusableTextField('First Name', null,true,
-                    _firstNameController),
+                reusableTextField(
+                    'First Name', null, true, _firstNameController),
                 const SizedBox(
                   height: 20.0,
                 ),
                 //last name
-                reusableTextField('Last Name', null, true,
-                    _lastNameController),
+                reusableTextField('Last Name', null, true, _lastNameController),
                 const SizedBox(
                   height: 20.0,
                 ),
                 //age
-                reusableTextField(
-                    'Age', null, true, _ageController),
+                reusableTextField('Age', null, true, _ageController),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -91,8 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 //   height: 20.0,
                 // ),
                 //email
-                reusableTextField('Email Id', null, true,
-                    _emailTextController),
+                reusableTextField('Email Id', null, true, _emailTextController),
                 const SizedBox(
                   height: 20.0,
                 ),
@@ -169,7 +180,10 @@ class _SignUpPageState extends State<SignUpPage> {
                             content: Text('Account Created Successfully!'),
                             duration: Duration(seconds: 3),
                             behavior: SnackBarBehavior.floating,
-                            margin: EdgeInsets.only(bottom: 50.0, left: 20.0, right: 20.0), // Adjust margins
+                            margin: EdgeInsets.only(
+                                bottom: 50.0,
+                                left: 20.0,
+                                right: 20.0), // Adjust margins
                           ),
                         );
                         Navigator.push(
