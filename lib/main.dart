@@ -5,10 +5,15 @@ import 'package:firebase_practice/pages/signin_page.dart';
 import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Supabase.initialize(
+    url: "https://qqmbsstwcheybjhloppl.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxbWJzc3R3Y2hleWJqaGxvcHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0Nzc5NjMsImV4cCI6MjA1MTA1Mzk2M30.sHEJizTipGupmoFNj7dIK4aumRhAC-dMQbE_muExMno",
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),

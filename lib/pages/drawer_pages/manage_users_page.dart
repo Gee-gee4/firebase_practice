@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_practice/my_app_bar.dart';
 import 'package:firebase_practice/pages/signin_page.dart';
-import 'package:firebase_practice/read,edit,delete%20data/edit_user_dialog.dart';
-import 'package:firebase_practice/read,edit,delete%20data/get_user_name.dart';
+import 'package:firebase_practice/read,edit,delete_data/edit_user_dialog.dart';
+import 'package:firebase_practice/read,edit,delete_data/get_user_name.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/controllers/simple_hidden_drawer_controller.dart';
 
@@ -77,17 +77,29 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
                 onPressed: () {
                   _logout(context); // Log out and navigate to SignInPage
                 },
-                child: const Text('Ok'),
+                child: Text(
+                  'Ok',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.onTertiary,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12))),
+                  backgroundColor: Theme.of(context).colorScheme.onTertiary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text('Cancel'),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ),
               ),
             ],
           );
@@ -124,7 +136,7 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
     }
   }
 
-   // Create a function to fetch data from Firestore
+  // Create a function to fetch data from Firestore
   Stream<QuerySnapshot> getUserStream() {
     return FirebaseFirestore.instance
         .collection('users')
@@ -155,7 +167,7 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
       ),
       body: StreamBuilder<QuerySnapshot>(
         // Use snapshots() for real-time data updates
-        stream:getUserStream(), // Using the function to get the stream
+        stream: getUserStream(), // Using the function to get the stream
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -169,7 +181,8 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
           }
 
           // Get document IDs from snapshot data
-          List<String> docIDs = snapshot.data!.docs.map((doc) => doc.id).toList();
+          List<String> docIDs =
+              snapshot.data!.docs.map((doc) => doc.id).toList();
           return ListView.builder(
             itemCount: docIDs.length,
             itemBuilder: (context, index) {
@@ -177,7 +190,8 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ListTile(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                   tileColor: Theme.of(context).colorScheme.primary,
                   title: GetUserName(documentId: docIDs[index]),
                   trailing: OutlinedButton(

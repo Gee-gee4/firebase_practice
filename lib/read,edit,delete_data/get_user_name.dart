@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class GetUserName extends StatelessWidget {
   final String documentId;
-  const GetUserName({super.key, required this.documentId});
+   GetUserName({super.key, required this.documentId});
 
+  
 //CollectionReference users = ... creates a reference to the users collection in Firestore. This is where all the user data is stored
   @override
   Widget build(BuildContext context) {
@@ -20,5 +21,5 @@ class GetUserName extends StatelessWidget {
           }
           return const Text('Loading...');
         });
-  }
+  } 
 }
