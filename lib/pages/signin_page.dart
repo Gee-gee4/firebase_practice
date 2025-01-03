@@ -77,7 +77,7 @@ class _SignInPageState extends State<SignInPage> {
                   20, MediaQuery.of(context).size.height * 0.2, 20, 20),
               child: Column(
                 children: [
-                  logoAuth('assets/auth/eyes.png'),
+                  logoAuth('assets1/auth/eyes.png'),
                   reusableTextField('Enter Username', Icons.person_outline,
                       true, _emailTextController),
                   const SizedBox(

@@ -1,5 +1,5 @@
 import 'package:firebase_practice/my_app_bar.dart';
-  import 'package:firebase_practice/utils/color_hex.dart';
+import 'package:firebase_practice/utils/color_hex.dart';
 import 'package:firebase_practice/widgets/reusable_widgets.dart';
 import 'package:firebase_practice/widgets/rooms_cards.dart';
 import 'package:firebase_practice/widgets/switch.dart';
@@ -22,8 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         backgroundColorAppBar:
             Colors.transparent, // Optional, you can customize the color here
-        
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +69,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Align(
-                        alignment: Alignment.centerLeft, child: SwitchButton()),
+                      alignment: Alignment.centerLeft,
+                      child: SwitchButton(),
+                    ),
                   ),
                 ),
               ],
@@ -125,15 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    myCircleAvatar('assets/auth/one.jpeg'),
+                    myCircleAvatar('assets1/auth/one.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),
-                    myCircleAvatar('assets/auth/two.jpeg'),
+                    myCircleAvatar('assets1/auth/two.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),
-                    myCircleAvatar('assets/auth/three.jpeg'),
+                    myCircleAvatar('assets1/auth/three.jpeg'),
                     const SizedBox(
                       width: 10,
                     ),

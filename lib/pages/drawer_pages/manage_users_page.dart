@@ -62,48 +62,49 @@ class _ManageUsersPageState extends State<ManageUsersPage> {
 
   void _showDialog() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Theme.of(context).colorScheme.surface,
-            title: const Text('Logout'),
-            content: const Text('Are you sure you want to logout?'),
-            actions: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.onTertiary,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12))),
-                onPressed: () {
-                  _logout(context); // Log out and navigate to SignInPage
-                },
-                child: Text(
-                  'Ok',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.onTertiary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Cancel',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
+                      borderRadius: BorderRadius.circular(12))),
+              onPressed: () {
+                _logout(context); // Log out and navigate to SignInPage
+              },
+              child: Text(
+                'Ok',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary,
                 ),
               ),
-            ],
-          );
-        });
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.onTertiary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   void _showEditDialog(BuildContext context, String documentId) async {

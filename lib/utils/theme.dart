@@ -9,7 +9,8 @@ ThemeData lightMode = ThemeData(
     primary: hexStringToColor('e9d3c0'),
     secondary: hexStringToColor('8d765b'),
     onTertiary: hexStringToColor('a18167'),
-    inversePrimary: Colors.white
+    inversePrimary: Colors.white,
+    inverseSurface: Colors.black87
   ),
 );
 
@@ -23,7 +24,8 @@ ThemeData darkMode = ThemeData(
     // 987654
     secondary: hexStringToColor('A67C52'),
     onTertiary: hexStringToColor('424242'),
-    inversePrimary: Colors.white70
+    inversePrimary: Colors.white70,
+    inverseSurface:Colors.white70
   ),
 );
 

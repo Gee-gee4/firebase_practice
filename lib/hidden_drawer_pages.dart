@@ -1,7 +1,6 @@
 // hidden_drawer_pages.dart
 
 import 'package:firebase_practice/pages/drawer_pages/account_page.dart';
-import 'package:firebase_practice/pages/drawer_pages/help_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/manage_users_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/music_page.dart';
 import 'package:firebase_practice/pages/drawer_pages/rooms_page.dart';
@@ -11,7 +10,6 @@ import 'package:firebase_practice/utils/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:provider/provider.dart';
-
 
 List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
   return [
@@ -96,22 +94,22 @@ List<ScreenHiddenDrawer> getDrawerPages(BuildContext context) {
       ),
       Theme(
         data: Provider.of<ThemeProvider>(context).themeData,
-        child: const SettingsPage(),
+        child:  SettingsPage(),
       ),
     ),
-    ScreenHiddenDrawer(
-      ItemHiddenMenu(
-        name: 'Help',
-        baseStyle: const TextStyle(),
-        selectedStyle: const TextStyle(),
-        colorLineSelected: Theme.of(context).colorScheme.surface,
-      ),
-      Theme(
-        data: Provider.of<ThemeProvider>(context).themeData,
-        child: const HelpPage(),
-      ),
-    ),
-    
+    // ScreenHiddenDrawer(
+    //   ItemHiddenMenu(
+    //     name: 'Help',
+    //     baseStyle: const TextStyle(),
+    //     selectedStyle: const TextStyle(),
+    //     colorLineSelected: Theme.of(context).colorScheme.surface,
+    //   ),
+    //   Theme(
+    //     data: Provider.of<ThemeProvider>(context).themeData,
+    //     child: const HelpPage(),
+    //   ),
+    // ),
+
     // ScreenHiddenDrawer(
     //     ItemHiddenMenu(
     //       name: 'Logout',
