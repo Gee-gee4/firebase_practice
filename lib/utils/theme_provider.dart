@@ -11,6 +11,8 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  bool get isDarkMode => _themeData.brightness == Brightness.dark;
+
   void toggleTheme() {
     if (_themeData == lightMode) {
       themeData = darkMode;

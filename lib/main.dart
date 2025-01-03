@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_practice/firebase_options.dart';
+import 'package:firebase_practice/model/playlist_provider.dart';
 import 'package:firebase_practice/pages/signin_page.dart';
 // import 'package:firebase_practice/pages/signin_page.dart';
 import 'package:firebase_practice/utils/theme_provider.dart';
@@ -12,11 +13,15 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Supabase.initialize(
     url: "https://qqmbsstwcheybjhloppl.supabase.co",
-    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxbWJzc3R3Y2hleWJqaGxvcHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0Nzc5NjMsImV4cCI6MjA1MTA1Mzk2M30.sHEJizTipGupmoFNj7dIK4aumRhAC-dMQbE_muExMno",
+    anonKey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxbWJzc3R3Y2hleWJqaGxvcHBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0Nzc5NjMsImV4cCI6MjA1MTA1Mzk2M30.sHEJizTipGupmoFNj7dIK4aumRhAC-dMQbE_muExMno",
   );
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => PlaylistProvider()),
+      ],
       child: const MyApp(),
     ),
   );

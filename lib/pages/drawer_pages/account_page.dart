@@ -119,7 +119,7 @@ class _AccountPageState extends State<AccountPage> {
                 children: [
                   CardImage(
                     imageUrl: _imageUrl,
-                    onUpload: (imageUrl) {
+                    onUpload: (String? imageUrl) {
                       setState(() {
                         _imageUrl = imageUrl;
                       });

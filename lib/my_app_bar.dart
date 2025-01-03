@@ -36,7 +36,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     .secondary, // Set title text color
               ),
             )
-          : null,
+          : null,centerTitle: true,
           actions: actions
     );
   }
